@@ -2,37 +2,97 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App.main {
+  height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
+  position: relative;
+  z-index: 2;
+  background-color: white;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 3% 0;
 }
 
-.App-link {
-  color: #61dafb;
+.Logo {
+  height: 7vh;
+  font-size: 400%;
+  margin: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.motto {
+  font-size: 200%;
+}
+
+p {
+  width: 50ch;
+  text-align: left;
+  padding: 1%;
+  margin: 0;
+  font-size: 120%;
+  font-weight: bold;
+  display: flex;
+  align-items: center
+}
+
+.intro-header, .mid-header, .closing-header {
+  font-size: 200%;
+  font-weight: bolder;
+  background-color: #90d8f8;
+  color: #ffffff;
+  padding: 1% 1%;
+  width: fit-content;
+  border-radius: 50px;
+  margin: 0 auto
+
+}
+
+.intro-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 20vh;
+}
+
+.mid, .closing {
+  position: relative;
+  z-index: 2;
+  background-color: white;
+  margin: 0;
+}
+
+.mid {
+  height: 350px;
+}
+
+.mid-content {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+}
+
+.bubble-svgs {
+  display: flex;
+  justify-content: center
+}
+
+.bubble {
+  width: 300px;
+  position: absolute;
+  right: 20%;
+  top: 30%;
+}
+
+.gears {
+  width: 300px;
+}
+
+.goo {
+  z-index: 1;
+}
+
+.closing-content {
+  display: flex;
+  justify-content: space-around;
 }
