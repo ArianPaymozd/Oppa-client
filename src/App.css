@@ -282,10 +282,7 @@ p {
     background-color: rgba(218, 151, 173, 0.63);
     z-index: 3
   }
-}
-
-@media only screen and (max-width: 1700px) {
-  .goo, .mid-paragraph, .gears-container {
+   .goo, .mid-paragraph, .gears-container {
     left: 1%;
   }
 
