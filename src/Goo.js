@@ -22,7 +22,7 @@ export default function Goo() {
           <feColorMatrix in="blur" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 30 -7" />
         </filter>
       </svg>
-      <div className="goo-main" onClick={() => setColor(!color)} onMouseMove={e => set({ xy: [ window.innerWidth > 1800 ? (e.pageX - ((window.innerWidth * .03) + ((window.innerWidth - 1800) / 2))) + 55 : e.pageX - (window.innerWidth * .03), e.pageY - (window.innerHeight * .19)] })}>
+      <div className="goo-main" onClick={() => setColor(!color)} onMouseMove={e => set({ xy: [ window.innerWidth > 1800 ? (e.pageX - ((window.innerWidth * .03) + ((window.innerWidth - 1800) / 2))) + 55 : e.pageX - (window.innerWidth * .03), window.innerWidth < 1400 ? e.pageY - (window.innerHeight * .35) : e.pageY - (window.innerHeight * .19)] })}>
         {trail.map((props, index) => (
           <a.div key={index} style={{ background, transform: props.xy.interpolate(trans) }} />
         ))}

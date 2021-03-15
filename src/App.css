@@ -240,3 +240,56 @@ p {
   font-size: 50%;
   font-weight: bold;
 }
+
+@media only screen and (max-width: 1700px) {
+  .intro, .mid, .closing {
+    position: absolute;
+    height: 90vh;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  .intro {
+    top: 0;
+    max-width: 1800px;
+  }
+  
+  .mid {
+    top: 85%;
+    max-width: 1800px;
+  }
+  
+  .closing {
+    top: 175%;
+    max-width: 1800px;
+  }
+
+  .sign-up {
+    top: 260%
+  }
+
+  .goo {
+    top: 35vh;
+    left: 3%;
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: rgba(218, 151, 173, 0.63);
+    z-index: 3
+  }
+}
+
+@media only screen and (max-width: 1700px) {
+  .goo, .mid-paragraph, .gears-container {
+    left: 1%;
+  }
+
+  .intro-paragraph, .bubble-svgs, .closing-paragraph {
+    right: 1%
+  }
+}
