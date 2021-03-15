@@ -2,13 +2,19 @@
   text-align: center;
 }
 
+body {
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
 .App.main {
-  height: 100%;
+  max-width: 1800px;
 }
 
 .header {
   position: relative;
-  z-index: 2;
+  z-index: 3;
+  color: #ffffff;
   background-color: white;
   display: flex;
   justify-content: center;
@@ -19,6 +25,7 @@
   height: 7vh;
   font-size: 400%;
   margin: 0;
+  position: absolute;
 }
 
 .motto {
@@ -33,37 +40,87 @@ p {
   font-size: 120%;
   font-weight: bold;
   display: flex;
-  align-items: center
+  align-items: center;
+  position: relative;
+  z-index: -1;
 }
 
 .intro-header, .mid-header, .closing-header {
   font-size: 200%;
   font-weight: bolder;
-  background-color: #90d8f8;
+  background-color: #90d9f886;
   color: #ffffff;
-  padding: 1% 1%;
-  width: fit-content;
-  border-radius: 50px;
-  margin: 0 auto
-
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 2;
 }
+
+.header-containor {
+  position: relative;
+}
+
+.intro, .mid, .closing {
+  position: absolute;
+  height: 70vh;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.intro {
+  top: 0;
+  max-width: 1800px;
+}
+
+.mid {
+  top: 60%;
+  max-width: 1800px;
+}
+
+.closing {
+  top: 125%;
+  max-width: 1800px;
+}
+
 
 .intro-content {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  height: 20vh;
+  align-items: flex-end;
+  height: 100%;
 }
 
-.mid, .closing {
-  position: relative;
-  z-index: 2;
-  background-color: white;
-  margin: 0;
+.goo {
+  top: 19vh;
+  left: 3%;
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: rgba(218, 151, 173, 0.63);
+  z-index: 3
 }
 
-.mid {
-  height: 350px;
+.intro-paragraph {
+  background-color: #d087df86;
+  height: 550px;
+  border-radius: 50%;
+  position: absolute;
+  right: 6%;
 }
 
 .mid-content {
@@ -72,27 +129,114 @@ p {
   justify-content: space-around;
 }
 
+.mid-paragraph {
+  background-color: #d087df86;
+  height: 550px;
+  border-radius: 50%;
+  position: absolute;
+  left: 6%;
+  bottom: 0;
+}
+
 .bubble-svgs {
-  display: flex;
-  justify-content: center
+  position: absolute;
+  bottom: 5%;
+  right: 3%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background-color:rgba(218, 151, 173, 0.63);
 }
 
 .bubble {
-  width: 300px;
   position: absolute;
-  right: 20%;
-  top: 30%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  z-index: 5;
+}
+
+.closing-content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.gears-container {
+  position: absolute;
+  bottom: 5%;
+  left: 3%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background-color:rgba(218, 151, 173, 0.63);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .gears {
   width: 300px;
 }
 
-.goo {
-  z-index: 1;
+.closing-paragraph {
+  background-color: #d087df86;
+  height: 550px;
+  border-radius: 50%;
+  position: absolute;
+  right: 6%;
+  bottom: 1%;
 }
 
-.closing-content {
+.sign-up {
+  position: absolute;
+  top: 180%;
+  font-size: 200%;
+  font-weight: bolder;
+  background-color: #90d9f886;
+  color: #ffffff;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.signup-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.register-input {
+  line-height: 250%;
+  width: 150%;
+  margin: 3% 0;
+  border-radius: 25px;
+  padding: 3%;
+  border: none;
+  font-size: 50%;
+}
+
+.signup-button {
+  margin: 4%;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: none;
+  background-color: #ffffff;
+  font-size: 50%;
+  font-weight: bold;
 }

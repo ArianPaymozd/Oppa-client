@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { animated, useSpring, config } from 'react-spring';
+import { animated, useSpring } from 'react-spring';
 import './App.css';
 import Gears from './gears';
 import Goo from './Goo'
@@ -7,9 +7,9 @@ import Goo from './Goo'
 function App() {
   const [popped, setPopped] = useState(false)
   const {width, opacity, right, top} = useSpring({
-    from: popped ? {width: '12%', opacity: 1, right: '30%', top: '30%'} : {width: '20%', opacity: 0, right: '25%', top: '6%'},
+    from: popped ? {width: '30%', opacity: 1, } : {width: '50%', opacity: 0, },
     config: {tension: 800},
-    to: popped ? {width: '20%', opacity: 0, right: '25%', top: '0'} : { width: '12%', opacity: 1, right: '30%', top: '30%'}
+    to: popped ? {width: '50%', opacity: 0, } : { width: '30%', opacity: 1, }
   })
   return (
     <div className="App">
@@ -18,7 +18,7 @@ function App() {
         <h1 className='Logo'>Oppa</h1>
       </header>
       <section className='intro'>
-        <header>
+        <header className='header-container'>
           <h3 className='intro-header'>What we do</h3>
         </header>
         <div className='intro-content'>
@@ -27,11 +27,11 @@ function App() {
         </div>
       </section>
       <section className='mid'>
-        <header>
+        <header className='header-container'>
         <h3 className='mid-header'>Keep your students engaged</h3>
         </header>
         <div className='mid-content'>
-        <div classname='bubble-svgs'>
+        <div className='bubble-svgs'>
         <animated.svg style={{width, opacity, right, top}} className='bubble' xmlns="http://www.w3.org/2000/animated.svg" viewBox="0 0 216 216"><g id="drops">
             
             <g>
@@ -93,22 +93,22 @@ function App() {
                 <path d="M363.84,266.16A108,108,0,0,1,212.16,417.84,108,108,0,1,0,363.84,266.16Z" transform="translate(-189 -243)" fill="#66cef6"/>
                 <path d="M387,333a107.57,107.57,0,0,0-23.16-66.84A108,108,0,0,0,212.16,417.84,108,108,0,0,0,387,333Z" transform="translate(-189 -243)" fill="#91d9f8"/>
               </g>
-              <path d="M209,351a88.1,88.1,0,0,1,88-88" transform="translate(-189 -243)" fill="#90d8f8" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/>
+              <path d="M209,351a88.1,88.1,0,0,1,88-88" transform="translate(-189 -243)" fill="#90d8f8" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="20"/>
             </g>
           </g>
         </animated.svg>
         </div>
-        <p className='mid-paragragh'>With Oppa, teachers can keep their students interested in their readings using vibrant colors and fun page animations!</p></div>
+        <p className='mid-paragraph'>With Oppa, teachers can keep their students interested in their readings using vibrant colors and fun page animations!</p></div>
       </section>
       <section className='closing'>
-        <header>
+        <header className='header-container'>
         <h3 className='closing-header'>Make learning fun</h3>
         </header>
         <div className='closing-content'>
-          <div>
+          <div className='gears-container'>
           <Gears />
         </div>
-        <p className='closing-paragragh'>With Oppa, you can make your lesson plans more engaging and fun by gamifying the lesson, choose constant page animations as well as "reward animations" that show up only when taskes are completed</p>
+        <p className='closing-paragraph'>With Oppa, you can make your lesson plans more engaging and fun by gamifying the lesson, choose constant page animations as well as "reward animations" that show up only when taskes are completed</p>
         </div>
       </section>
       <section className='sign-up'>
@@ -116,23 +116,15 @@ function App() {
             <h3>Sign Up Now</h3>
         </header>
         <form className='signup-form'>
-            <div>
-              <label htmlFor="first-name">First name</label>
-              <input placeholder='First Name' type="text" name='first-name' id='first-name' />
-            </div>
-            <div>
-              <label htmlFor="last-name">Last name</label>
-              <input type="text" name='last-name' id='last-name' placeholder='Last Name' />
-            </div>
-            <div>
-              <label htmlFor="username">Email</label>
-              <input type="text" name='username' id='username' />
-            </div>
-            <div>
-              <label htmlFor="password">Password</label>
-              <input type="password" name='password' id='password' />
-            </div>
-            <button type='submit'>Sign Up</button>
+              <input type="text" name='first-name' id='first-name' className='register-input' placeholder='First Name' />
+            
+              <input type="text" name='username' id='username' className='register-input' placeholder='Last Name' />
+       
+              <input type="text" name='last-name' id='last-name' className='register-input' placeholder='School Code' />
+        
+              <input type="password" name='password' id='password' className='register-input' placeholder='Password' />
+         
+            <button className='signup-button' type='submit'>Sign Up</button>
         </form>
       </section>
     </main>

@@ -14,19 +14,19 @@
   .goo-main  div:nth-child(1) {
     width: 120px;
     height: 120px;
-    z-index: -1;
+    z-index: 2;
   }
   
   .goo-main  div:nth-child(2) {
     width: 200px;
     height: 200px;
-    z-index: -1;
+    z-index: 2;
   }
   
   .goo-main  div:nth-child(3) {
     width: 250px;
     height: 250px;
-    z-index: -1;
+    z-index: 2;
   }
   
   .goo-main  div::after {
@@ -55,13 +55,15 @@
   }
   
   .goo-main {
-    top: 20%;
+    top: 0;
     left: 0;
     position: absolute;
-    width: 40%;
-    height: 17%;
+    width: 600px;
+    height: 600px;
     filter: url('#goo');
     overflow: hidden;
+    border-radius: 50%;
+    z-index: 1
   }
   
   @media only screen and (max-width: 500px) {
