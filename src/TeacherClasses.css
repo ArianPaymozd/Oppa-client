@@ -1,0 +1,44 @@
+.TeacherClasses-main {
+    margin: 5vh;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.TeacherClasses-main a {
+    text-decoration: none;
+    cursor: auto;
+    color: black;
+}
+
+.class {
+    cursor: pointer;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: aqua;
+    width: 20vw;
+    height: 20vw;
+    max-width: 300px;
+    max-height: 300px;
+    margin: 3% auto;
+    border-radius: 16%;
+}
+
+.class-placeholder {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(199, 223, 223);
+    width: 20vw;
+    height: 20vw;
+    max-width: 300px;
+    max-height: 300px;
+    margin: 3% auto;
+    border-radius: 16%;
+}

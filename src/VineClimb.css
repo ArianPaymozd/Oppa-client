@@ -1,0 +1,15 @@
+.VineClimb {
+}
+
+.vine {
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.vine-p {
+    margin-top: 10vh;
+    width: 77ch;
+    height: 50vh;
+    overflow: auto;
+}

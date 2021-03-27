@@ -1,12 +1,21 @@
 import React from 'react';
+import {BrowserRouter} from 'react-router-dom'
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ApiProvider } from './ApiContext';
+import { WorksheetsProvider } from './WorksheetsContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <ApiProvider>
+        <WorksheetsProvider>
+        <App />
+        </WorksheetsProvider>
+      </ApiProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,5 +1,6 @@
 .machine {
-    width: 400px;
+    width: 22.5vw;
+    max-width: 400px;
     fill: #677068;
   }
   

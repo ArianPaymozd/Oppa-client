@@ -1,0 +1,44 @@
+.TeacherClassPage-main {
+    margin: 5vh;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.TeacherClassPage-main a {
+    text-decoration: none;
+    cursor: auto;
+    color: black;
+}
+
+.worksheet {
+    cursor: pointer;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #90d9f886;
+    width: 20vw;
+    height: 10vw;
+    max-width: 300px;
+    max-height: 150px;
+    margin: 3% auto;
+    border-radius: 25px;
+}
+
+.worksheet-placeholder {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(199, 223, 223, 0.555);
+    width: 20vw;
+    height: 10vw;
+    max-width: 300px;
+    max-height: 150px;
+    margin: 3% auto;
+    border-radius: 25px;
+}

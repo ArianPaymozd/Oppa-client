@@ -1,0 +1,262 @@
+.Landing {
+  margin: 5vh 0 0;
+  text-align: center;
+}
+
+.Logo {
+  height: 7vh;
+  font-size: 400%;
+  margin: 0;
+  position: absolute;
+}
+
+.motto {
+  font-size: 200%;
+}
+
+.intro-paragraph, .mid-paragraph, .closing-paragraph {
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  padding: 4%;
+  margin: 0;
+  font-size: 2vw;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: -1;
+  width: 37vw;
+  height: 37vw;
+  max-width: 500px;
+  max-height: 500px;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.intro-header, .mid-header, .closing-header {
+  font-size: 4vw;
+  font-weight: bolder;
+  background-color: #90d9f886;
+  color: #ffffff;
+  max-width: 500px;
+  max-height: 500px;
+  width: 35vw;
+  height: 35vw;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 2;
+}
+
+.header-containor {
+  position: relative;
+}
+
+.intro, .mid, .closing {
+  position: relative;
+  height: 80vw;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  max-height: 1100px;
+}
+
+.intro {
+  top: 0;
+  max-width: 1800px;
+}
+
+.mid {
+  top: 60%;
+  max-width: 1800px;
+}
+
+.closing {
+  top: 125%;
+  max-width: 1800px;
+}
+
+
+.intro-content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  height: 100%;
+  max-height: 1100px;
+}
+
+.goo {
+  left: 3%;
+  position: absolute;
+  max-width: 600px;
+  max-height: 600px;
+  width: 45vw;
+  height: 45vw;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: rgba(218, 151, 173, 0.63);
+  z-index: 3
+}
+
+.intro-paragraph {
+  background-color: #d087df86;
+  right: 2%;
+}
+
+.mid-content {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  max-height: 1100px;
+}
+
+.mid-paragraph {
+  background-color: #d087df86;
+  border-radius: 50%;
+  position: absolute;
+  left: 6%;
+  bottom: 0;
+}
+
+.bubble-svgs {
+  position: absolute;
+  bottom: 5%;
+  right: 3%;
+  width: 45vw;
+  height: 45vw; 
+  max-width: 600px;
+  max-height: 600px;
+  border-radius: 50%;
+  background-color:rgba(218, 151, 173, 0.63);
+}
+
+.bubble {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  z-index: 5;
+}
+
+.closing-content {
+  display: flex;
+  justify-content: space-around;
+  max-height: 1100px;
+}
+
+.gears-container {
+  position: absolute;
+  bottom: 5%;
+  left: 3%;
+  width: 45vw;
+  height: 45vw; 
+  max-width: 600px;
+  max-height: 600px;
+  border-radius: 50%;
+  background-color:rgba(218, 151, 173, 0.63);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.closing-paragraph {
+  background-color: #d087df86;
+  border-radius: 50%;
+  position: absolute;
+  right: 6%;
+  bottom: 1%;
+}
+
+.sign-up-container {
+  position: relative;
+}
+
+.sign-up {
+  position: absolute;
+  top: 87%;
+  font-size: 2.2vw;
+  font-weight: bolder;
+  background-color: #90d9f886;
+  color: #ffffff;
+  max-width: 500px;
+  max-height: 500px;
+  width: 35vw;
+  height: 35vw;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.signup-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.register-input {
+  line-height: 250%;
+  width: 150%;
+  margin: 3% 0;
+  border-radius: 25px;
+  padding: 3%;
+  border: none;
+  font-size: 50%;
+}
+
+.signup-button {
+  margin: 4%;
+  width: 6.7vw;
+  height: 6vw;
+  max-width: 80px;
+  max-height: 70px;
+  border-radius: 50%;
+  border: none;
+  background-color: #ffffff;
+  font-size: 50%;
+  font-weight: bold;
+}
+
+.sign-up-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: space-around;
+}
+
+@media only screen and (min-width: 1300px) {
+  .intro-paragraph, .mid-paragraph, .closing-paragraph {
+    font-size: 160%
+  }
+
+  .sign-up {
+    font-size: 160%;
+  }
+
+  .intro-header, .mid-header, .closing-header {
+    font-size: 300%;
+  }
+}
+
