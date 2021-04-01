@@ -14,7 +14,9 @@
   .goo-main  div:nth-child(1) {
     width: 6vw;
     height: 6vw;
+    min-width: 40px;
     max-width: 80px;
+    min-height: 40px;
     max-height: 80px;
     z-index: 2;
   }

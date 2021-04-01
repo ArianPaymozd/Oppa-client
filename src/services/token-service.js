@@ -1,4 +1,3 @@
-import jwtDecode from 'jwt-decode'
 import config from '../config'
 
 let _timeoutId
@@ -14,18 +13,25 @@ const TokenService = {
     getTeacherId() {
         return window.localStorage.getItem('teacher_id')
     },
+    saveStudentId(id) {
+        return window.localStorage.setItem('student_id', id)
+    },
+    getStudentId() {
+        return window.localStorage.getItem('student_id')
+    },
     getAuthToken() {
         return window.localStorage.getItem(config.TOKEN_KEY)
     },
     clearAuthToken() {
         window.localStorage.removeItem(config.TOKEN_KEY)
+        window.localStorage.removeItem('student_id') || window.localStorage.removeItem('teacher_id')
     },
     hasAuthToken() {
         return !!TokenService.getAuthToken()
     },
-    makeBasicAuthToken(userName, password) {
-        return window.btoa(`${userName}:${password}`)
-    },
+    // makeBasicAuthToken(userName, password) {
+    //     return window.btoa(`${userName}:${password}`)
+    // },
     // parseJwt(jwt) {
     //     return jwtDecode(jwt)
     // },

@@ -1,10 +1,11 @@
 .CreateClass-main {
     display: flex;
     justify-content: center;
-    margin-top: 5vh;
+    margin-top: 7vh;
 }
 
 .CreateClass-content {
+    margin-top: 5vh;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -16,6 +17,7 @@
     border-radius: 50%;
     padding: 2vh;
     font-size: 2.2vw;
+    color: rgb(133, 133, 133);
 }
 
 .CreateClass-heading {
@@ -44,7 +46,6 @@
 }
 
 .CreateClass-button {
-    margin-top: 2vw;
     width: 6vw;
     height: 6vw;
     max-width: 80px;
@@ -54,6 +55,20 @@
     background-color: #ffffff;
     font-size: 50%;
     font-weight: bold;
+}
+
+.nav a {
+    font-size: 150%;
+    cursor: pointer;
+    color: rgb(133, 133, 133);
+}
+
+.nav button {
+    font-size: 100%;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: rgb(133, 133, 133);
 }
 
 @media only screen and (min-width: 1300px) {

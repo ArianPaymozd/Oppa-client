@@ -16,26 +16,26 @@ const AuthApiService = {
                     ? res.json().then(e => Promise.reject(e))
                     : res.json()
             )
+            .then(res => AuthApiService.postLogin({username: user.username, password: user.password, userType: user.userType }))
     },
-    postLogin({ username, password }) {
-        console.log(username, password)
+    postLogin({ username, password, userType }) {
         return fetch(`${config.API_ENDPOINT}/auth/login`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
             },
-            body: JSON.stringify({ username, password }),
+            body: JSON.stringify({ username, password, userType }),
         })
             .then(res =>
                 (!res.ok)
                     ? res.json().then(e => Promise.reject(e))
                     : res.json()
             )
-            .then(res => {
-                TokenService.saveAuthToken(res.authToken)
-                TokenService.saveTeacherId(res.user_id)
+            .then(data => {
+                TokenService.saveAuthToken(data.authToken)
+                userType === 'teacher' ? TokenService.saveTeacherId(data.user_id) : TokenService.saveStudentId(data.user_id)
                 IdleService.regiserIdleTimerResets()
-                return res
+                return data
             })
     },
     postRefreshToken() {

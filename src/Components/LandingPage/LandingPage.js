@@ -2,10 +2,9 @@ import { useState } from 'react';
 import { useHistory } from 'react-router'
 import { animated, useSpring } from 'react-spring';
 import './LandingPage.css';
-import Gears from './gears';
-import Goo from './Goo'
-import TokenService from './services/token-service';
-import AuthApiService from './services/auth-service';
+import Gears from '../../animations/Gears/gears';
+import Goo from '../../animations/Goo/Goo'
+import AuthApiService from '../../services/auth-service';
 
 function SignupForm(props) {
     const history = useHistory()
@@ -15,13 +14,10 @@ function SignupForm(props) {
         AuthApiService.postUser({
             full_name: e.target['full-name'].value,
             username: `${e.target['username'].value}`,
-            password: e.target['password'].value
+            password: e.target['password'].value,
+            userType: props.userType === 1 ? 'teacher' : 'student'
         })
-        .then(() => {
-            AuthApiService.postLogin({password: e.target['password'].value, username: `${e.target['username'].value}`})
-        })
-        .then(() => {
-            console.log(TokenService.getTeacherId())
+        .then(res => {
             history.push('/teacher_classes')
         })
     }
@@ -32,13 +28,11 @@ function SignupForm(props) {
             <h3>Sign Up Now</h3>
         </header>
         <form className='signup-form' onSubmit={(e) => handleSubmit(e)}>
-            <input type="text" name='full-name' id='full-name' className='register-input' placeholder='Full Name' required />
+            <input type="text" name='full-name' id='full-name' className='register-input' placeholder='Full Name: John Smith' required />
     
-            <input type="text" name='username' id='username' className='register-input' placeholder='Username' required />
-
-            <input type="text" name='school-code' id='last-name' className='register-input' placeholder='School Code' required />
+            <input type="text" name='username' id='username' className='register-input' placeholder='Username: user1234' required />
     
-            <input type="password" name='password' id='password' className='register-input' placeholder='Password' required />
+            <input type="password" name='password' id='password' className='register-input' placeholder='Password: Password1$' required />
             
             <div className='sign-up-buttons'>
               <button className='signup-button' type='submit'>Sign Up</button>
@@ -54,12 +48,12 @@ function LogInForm(props) {
 
   function handleSubmit(e) {
       e.preventDefault()
-      AuthApiService.postLogin({password: e.target['password'].value, username: `${e.target['username'].value}`})
+      AuthApiService.postLogin({password: e.target['password'].value, username: e.target['username'].value, userType: props.userType === 1 ? 'teacher' : 'student'})
       .then(() => {
-          console.log(TokenService.getTeacherId())
           history.push('/teacher_classes')
       })
   }
+
 
     return (
       <div className='sign-up'>
@@ -72,10 +66,24 @@ function LogInForm(props) {
             <input type="password" name='password' id='password' className='register-input' placeholder='Password' required />
             
             <div className='sign-up-buttons'>
-              <button onClick={() => props.setForm(1)} className='signup-button' type='submit'>Sign Up</button>
-              <button  className='signup-button'>Log-in</button>
+              <button onClick={() => props.setForm(1)} className='signup-button'>Sign Up</button>
+              <button type='submit' className='signup-button'>Log-in</button>
             </div>
         </form>
+      </div>
+    )
+}
+
+function UserSelect(props) {
+    return (
+      <div className='sign-up'>
+        <header>
+            <h3>Are you a teacher or student?</h3>
+        </header>
+            <div className='sign-up-buttons'>
+              <button onClick={() => props.setUser(1)} className='signup-button'>Teacher</button>
+              <button onClick={() => props.setUser(2)} className='signup-button'>Student</button>
+            </div>
       </div>
     )
 }
@@ -83,13 +91,45 @@ function LogInForm(props) {
 function LandingPage() {
   const [popped, setPopped] = useState(false)
   const [form, setForm] = useState(1)
-  const {width, opacity, right, top} = useSpring({
-    from: popped ? {width: '30%', opacity: 1, } : {width: '50%', opacity: 0, },
-    config: {tension: 800},
-    to: popped ? {width: '50%', opacity: 0, } : { width: '30%', opacity: 1, }
-  })
+  const [userType, setUserType] = useState(0)
+
+  const [bubbleStyle, setBubbleStyle] = useSpring(() => ({
+    config: { tension: 950 },
+    width: '30%',
+    opacity: 1
+  }))
+
+  function handleBubblePop() {
+    setPopped(!popped)
+    !popped ?
+    setBubbleStyle({
+      width: '40%',
+      opacity: 0
+    })
+    : setBubbleStyle({
+      width: '30%',
+      opacity: 1
+    })
+  }
+
+  function forms() {
+    if (userType === 0) {
+      return <UserSelect setUser={setUserType} />
+    } else {
+      return teacherForms()
+    }
+  }
+
+  function teacherForms() {
+    return form === 1 ? <SignupForm userType={userType} setForm={setForm}/> : <LogInForm userType={userType} setForm={setForm} />
+  }
+
   return (
     <div className="Landing">
+      
+      <header className='header'>
+          <h1>Oppa</h1> 
+      </header>
       <section className='intro'>
         <header className='header-container'>
           <h3 className='intro-header'>What we do</h3>
@@ -105,7 +145,7 @@ function LandingPage() {
         </header>
         <div className='mid-content'>
         <div className='bubble-svgs'>
-        <animated.svg style={{width, opacity, right, top}} className='bubble' xmlns="http://www.w3.org/2000/animated.svg" viewBox="0 0 216 216"><g id="drops">
+        <animated.svg style={bubbleStyle} className='bubble' xmlns="http://www.w3.org/2000/animated.svg" viewBox="0 0 216 216"><g id="drops">
             
             <g>
               <g>
@@ -158,7 +198,7 @@ function LandingPage() {
               </g>
             </g>
           </g></animated.svg>
-        <animated.svg onClick={() => setPopped(!popped)} style={{width, opacity, right, top}} className='bubble' xmlns="http://www.w3.org/2000/animated.svg" viewBox="0 0 216 216">
+        <animated.svg onClick={() => handleBubblePop()} style={bubbleStyle} className='bubble' xmlns="http://www.w3.org/2000/animated.svg" viewBox="0 0 216 216">
           
           <g id="bubble">
             <g>
@@ -185,7 +225,7 @@ function LandingPage() {
         </div>
       </section>
       <section className='sign-up-container'>        
-        {form === 1 ? <SignupForm setForm={setForm}/> : <LogInForm setForm={setForm} />}
+        {forms()}
       </section>
     </div>
   );

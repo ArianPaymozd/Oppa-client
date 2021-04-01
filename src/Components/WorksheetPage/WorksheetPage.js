@@ -1,11 +1,12 @@
 import { useContext } from "react"
-import Bubble from "./Bubble"
-import VineClimb from "./VineClimb"
-import WorksheetsContext from "./WorksheetsContext"
+import Bubble from "../../animations/Bubble/Bubble"
+import Nav from "../Nav"
+import VineClimb from "../../animations/Vine/VineClimb"
+import WorksheetsContext from "../../Contexts/WorksheetsContext"
+import './WorksheetPage.css'
 
 export default function WorksheetPage() {
     const {worksheet} = useContext(WorksheetsContext)
-    console.log(worksheet)
 
     function scrollAnimation(animation) {
         if (animation === 'vine-climb') {
@@ -15,15 +16,14 @@ export default function WorksheetPage() {
             return <Bubble reading={worksheet.reading} />
         }
     }
-    console.log(worksheet.animation_scroll)
 
     return (
-        <div>
-            <div className='reading'>
-            </div>
-            <div>
+            <div className='Worksheet-main'>
+                <header className='header'>
+                    <h1>Oppa</h1> 
+                    <Nav />
+                </header>
                 {scrollAnimation(worksheet.animation_scroll)}
             </div>
-        </div>
     )
 }

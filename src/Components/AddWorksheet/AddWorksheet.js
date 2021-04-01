@@ -1,9 +1,10 @@
 import { useHistory, useParams } from "react-router-dom"
-import config from "./config"
-import TokenService from "./services/token-service"
+import config from "../../config"
+import TokenService from "../../services/token-service"
 import './AddWorksheet.css'
+import Nav from "../Nav"
 
-export default function Worksheet() {
+export default function AddWorksheet() {
     const {class_id} = useParams()
     const history = useHistory()
     const handleAddWorksheet = e => {
@@ -18,7 +19,6 @@ export default function Worksheet() {
                 class_id: class_id,
                 reading: e.target['worksheet-text'].value,
                 animation_scroll: e.target['scroll-animation'].value,
-                animation_questions: e.target['question-animation'].value,
                 worksheet_name: e.target['worksheet-name'].value
             })
         })
@@ -26,18 +26,22 @@ export default function Worksheet() {
     }
     return (
         <div className='AddWorksheet-main'>
-            <form onSubmit={(e) => handleAddWorksheet(e)}>
-                <input type='text' name='worksheet-name' placeholder='Enter Title' required />
-                <textarea type='text' name='worksheet-text' placeholder='Enter Text' required />
-                <select name='scroll-animation'>
+                <header className='header'>
+                    <h1>Oppa</h1> 
+                    <Nav />
+                </header>
+            <div className='AddWorksheet-content'>
+                <header className='AddWorksheet-heading'><h2 className='AddWorksheet-title'>Add Worksheet</h2></header>
+            <form className='AddWorksheet-form' onSubmit={(e) => handleAddWorksheet(e)}>
+                <input type='text' className='worksheet-input' name='worksheet-name' placeholder='Enter Title' required />
+                <textarea type='text' className='worksheet-textarea' name='worksheet-text' placeholder='Enter Text' required />
+                <select className='worksheet-input' name='scroll-animation'>
                     <option value='bubble'>Bubble Pop</option>
                     <option value='vine-climb'>Vine Climb</option>
                 </select>
-                <select name='question-animation'>
-                    <option value='car-game'>Car Game</option>
-                </select>
-                <button type='submit'>Add Worksheet</button>
+                <button className='AddWorksheet-button' type='submit'>Add Worksheet</button>
             </form>
+            </div>
         </div>
     )
 }

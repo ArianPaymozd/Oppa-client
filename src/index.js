@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ApiProvider } from './ApiContext';
-import { WorksheetsProvider } from './WorksheetsContext';
+import { ApiProvider } from './Contexts/ApiContext';
+import { WorksheetsProvider } from './Contexts/WorksheetsContext';
 
 ReactDOM.render(
   <React.StrictMode>

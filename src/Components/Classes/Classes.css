@@ -1,5 +1,5 @@
 .TeacherClasses-main {
-    margin: 5vh;
+    margin: 7vh 5vw;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
 }
@@ -11,6 +11,7 @@
 }
 
 .class {
+    position: relative;
     cursor: pointer;
     list-style: none;
     padding: 0;
@@ -18,13 +19,15 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: aqua;
+    background-color: #90d9f886;
     width: 20vw;
     height: 20vw;
     max-width: 300px;
     max-height: 300px;
     margin: 3% auto;
     border-radius: 16%;
+    color: rgb(133, 133, 133);
+    z-index: 0;
 }
 
 .class-placeholder {
@@ -34,7 +37,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgb(199, 223, 223);
+    background-color: rgba(199, 223, 223, 0.555);
     width: 20vw;
     height: 20vw;
     max-width: 300px;
@@ -42,3 +45,33 @@
     margin: 3% auto;
     border-radius: 16%;
 }
+
+.class-container {
+    position: relative;
+}
+
+.delete-class {
+    margin: 0 auto;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    top: 3%;
+    left: 0;
+    right: 0;
+    width: 20vw;
+    max-width: 300px;
+    height: 20%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border: none;
+    background-color: rgb(255, 174, 174);
+    font-size: 2vw;
+    z-index: 2;
+}
+
+@media only screen and (min-width: 1800px) {
+    .delete-class {
+        font-size: 200%
+    }
+}
+

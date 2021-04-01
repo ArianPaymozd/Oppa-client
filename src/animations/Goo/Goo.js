@@ -21,10 +21,10 @@ export default function Goo() {
       <svg style={{ position: 'absolute', width: 0, height: 0 }}>
         <filter id="goo" >
           <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="30" />
-          <feColorMatrix in="blur" values={`1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 80 -7`} />
+          <feColorMatrix in="blur" values={`1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 ${window.innerWidth >= 1000 ? 40 : 80} -7`} />
         </filter>
       </svg>
-      <div className="goo-main" onClick={() => setColor(!color)} onMouseLeave={e => set({xy: window.innerWidth < 1333 ? [(window.innerWidth * .45) / 2, (window.innerWidth * .45) / 2] : [300, 300]})} onMouseEnter={e => {setTop(e.target.getClientRects()[0].top); setleft(e.target.getClientRects()[0].left)}} onMouseDown={e => console.log(e.target.getClientRects(), e.pageY, window.pageYOffset)} onMouseMove={e => set({ xy: [ e.pageX - left, e.pageY - top - window.pageYOffset] })}>
+      <div className="goo-main" onClick={() => setColor(!color)} onMouseLeave={e => set({xy: window.innerWidth < 1333 ? [(window.innerWidth * .45) / 2, (window.innerWidth * .45) / 2] : [300, 300]})} onMouseEnter={e => {setTop(e.target.getClientRects()[0].top); setleft(e.target.getClientRects()[0].left)}} onMouseMove={e => set({ xy: [ e.pageX - left, e.pageY - top - window.pageYOffset] })}>
         {trail.map((props, index) => (
           <a.div key={index} style={{ background, transform: props.xy.interpolate(trans) }} />
         ))}

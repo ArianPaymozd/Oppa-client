@@ -1,0 +1,48 @@
+.scroll-bubble {
+    width: 100%;
+    max-height: 100vh;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows: 30% 60%;
+    grid-template-areas: 
+        '. bubble .'
+        '. reading .' 
+    ;
+}
+
+.bubble-container {
+    grid-area: bubble;
+    max-height: 100vh;
+    position: relative;
+    z-index: -1;
+}
+
+.bubble-p {
+    grid-area: reading;
+    font-size: 2.4vw;
+    overflow: auto;
+    position: relative;
+    z-index: 2;
+    padding: 2vw;
+    background-color: #90d9f886;
+    border-radius: 25px;
+}
+
+.worksheet-bubble {
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    z-index: 5;
+}
+
+@media only screen and (min-width: 1300px) {
+    .bubble-p {
+        font-size: 170%
+    }
+}

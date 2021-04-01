@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { useSpring, animated as a } from 'react-spring'
 import './VineClimb.css'
 
@@ -210,7 +210,7 @@ export default function VineClimb(props) {
       <polygon points="42.48 184.65 29.27 184.65 28.78 161.33 41.99 161.33 42.48 184.65" fill="#99e0cc" stroke="#000" strokeMiterlimit="10"/>
     </a.g>
   </svg>
-  <div onScroll={(e) => {onScroll((e.target.scrollTop  / (e.target.scrollHeight - e.target.getClientRects()[0].height)) * (200 * 3))}} className='vine-p'>
+  <div onScroll={(e) => {onScroll((e.target.scrollTop / (e.target.scrollHeight - e.target.getClientRects()[0].height)) * (200 * 3))}} className='vine-p'>
   <p>{props.reading}</p>
   </div>
   </div>

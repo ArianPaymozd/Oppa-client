@@ -1,16 +1,27 @@
 import { useState } from 'react'
 import {useSpring, animated} from 'react-spring'
+import './Bubble.css'
 
 export default function Bubble(props) {
     const [popped, setPopped] = useState(false)
     const [style, set] = useSpring(() => ({
       opacity: 1,
-      width: '20%'
+      height: '50px',
+      left: 0,
+      top: '50%'
     }))
-    const onScroll = (width) => set({width: `${width}%`})
+    const onScroll = (height) => {
+      if (height >= window.innerHeight * .3 - 5) {
+        setPopped(true)
+      } else if (popped === true) {
+        setPopped(false)
+      }
+      popped ? set({height: `${window.innerHeight * 3}px`, left: -window.innerHeight * 1.5, top: `${window.innerHeight / 4.6}%`}) : set({height: `${height}px`, left: 0, top: '50%'})
+    }
     return (
-        <div className='scroll-bubble'>
-        <animated.svg style={style} className='bubble' xmlns="http://www.w3.org/2000/animated.svg" viewBox="0 0 216 216"><g id="drops">
+        <div style={{height: window.innerHeight}} className='scroll-bubble'>
+          <div className='bubble-container'>
+        <animated.svg style={style} className='worksheet-bubble' xmlns="http://www.w3.org/2000/animated.svg" viewBox="0 0 216 216"><g id="drops">
             
             <g>
               <g>
@@ -63,7 +74,7 @@ export default function Bubble(props) {
               </g>
             </g>
           </g></animated.svg>
-        <animated.svg onClick={() => setPopped(!popped)} style={style} className='bubble' xmlns="http://www.w3.org/2000/animated.svg" viewBox="0 0 216 216">
+        <animated.svg onClick={() => setPopped(!popped)} style={style} className='worksheet-bubble' xmlns="http://www.w3.org/2000/animated.svg" viewBox="0 0 216 216">
           <g id="bubble">
             <g>
               <g>
@@ -74,8 +85,9 @@ export default function Bubble(props) {
             </g>
           </g>
         </animated.svg>
-        <div onScroll={e => {onScroll((e.target.scrollTop * 100) / e.target.scrollHeight); console.log((e.target.scrollTop * 100) / e.target.scrollHeight)}} className='vine-p'>
-          <p id='vin'>ad as dsad asdas asd asd sdagfdg sg adsdag dfgdfsgdfg dfs dfg g </p>
+        </div>
+        <div className='bubble-p' onScroll={e => {onScroll(((e.target.scrollTop + e.target.getClientRects()[0].height) / e.target.scrollHeight) * (window.innerHeight * .3))}}>
+          <p>{props.reading}</p>
         </div>
         </div>
     )

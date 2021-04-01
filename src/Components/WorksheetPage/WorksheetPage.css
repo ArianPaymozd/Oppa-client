@@ -1,0 +1,17 @@
+.nav a {
+    font-size: 150%;
+    cursor: pointer;
+    color: rgb(133, 133, 133);
+  }
+
+  .nav button {
+    font-size: 100%;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: rgb(133, 133, 133);
+  }
+
+.Worksheet-main {
+    margin: 7vh 0;
+}
