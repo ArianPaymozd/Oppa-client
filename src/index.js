@@ -12,7 +12,7 @@ ReactDOM.render(
     <BrowserRouter>
       <ApiProvider>
         <WorksheetsProvider>
-        <App />
+          <App />
         </WorksheetsProvider>
       </ApiProvider>
     </BrowserRouter>

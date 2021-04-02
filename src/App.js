@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import LandingPage from './Components/LandingPage/LandingPage'
 import Classes from './Components/Classes/Classes';
 // import config from './config'
