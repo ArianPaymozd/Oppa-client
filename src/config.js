@@ -1,5 +1,5 @@
 const config = {
-    API_ENDPOINT: 'https://strawberry-cobbler-34894.herokuapp.com/api',
+    API_ENDPOINT: 'https://polar-tundra-66284.herokuapp.com/api',
     TOKEN_KEY: 'oppa-client-auth-token',
 }
 
