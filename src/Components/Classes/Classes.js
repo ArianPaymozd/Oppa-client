@@ -39,12 +39,16 @@ export default function Classes() {
                 'content-type': 'application/json'
             }
         })
-        .then(res => res.json())
+        .then(res =>
+            (!res.ok)
+                ? res.json().then(e => Promise.reject(e))
+                : res.json()
+        )
         .then(data => {
             let placeholdersArr = []
-            if (data === undefined) {
+            if (data.length === 0) {
                 let placeholders = 0
-                while (placeholders < 12) {
+                while (placeholders < 7) {
                     placeholdersArr.push(1)
                     placeholders++
                 }
@@ -58,7 +62,7 @@ export default function Classes() {
             } else {
                 const extraForRow = ((Math.floor((data.length + 1) / 4) + 1) * 4) - (data.length + 1)
                 let placeholders = 0
-                while (placeholders <= 8 - extraForRow) {
+                while (placeholders < 4 + extraForRow) {
                     placeholdersArr.push(1)
                     placeholders++
                 }
@@ -101,8 +105,8 @@ export default function Classes() {
                     </Link>
                     {classes.map((course, idx) => {
                         return (
-                            <div className='class-container'>
-                            {course.class_id && TokenService.getTeacherId() ? <animated.button style={deleteStyle} className='delete-class' onClick={() => {handleDelete(course.class_id)}}>Delete</animated.button> : null}
+                            <div key={idx} className='class-container'>
+                            {course.class_id && TokenService.getTeacherId() ? <animated.button key={`button-${idx}`} style={deleteStyle} className='delete-class' onClick={() => {handleDelete(course.class_id)}}>Delete</animated.button> : null}
                                 <Link key={idx} to={ course.class_id ? `/teacher_classes/${course.class_id}` : '/teacher_classes'} >
                                     <animated.ul style={style} className={course.class_id ? 'class' : 'class-placeholder'}>
                                         <li><b>{course.class_name}</b></li>

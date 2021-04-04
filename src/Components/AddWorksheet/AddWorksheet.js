@@ -22,7 +22,11 @@ export default function AddWorksheet() {
                 worksheet_name: e.target['worksheet-name'].value
             })
         })
-        .then(() => history.push(`/teacher_classes/${class_id}`))
+        .then(res =>
+            (!res.ok)
+                ? res.json().then(e => Promise.reject(e))
+                : history.push(`/teacher_classes/${class_id}`)
+        )
     }
     return (
         <div className='AddWorksheet-main'>

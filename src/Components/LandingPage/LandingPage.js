@@ -8,6 +8,7 @@ import AuthApiService from '../../services/auth-service';
 
 function SignupForm(props) {
     const history = useHistory()
+    const [error, setError] = useState({})
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -19,6 +20,9 @@ function SignupForm(props) {
         })
         .then(res => {
             history.push('/teacher_classes')
+        }) 
+        .catch(res => {
+          setError({ error: res.error })
         })
     }
     
@@ -27,6 +31,7 @@ function SignupForm(props) {
         <header>
             <h3>Sign Up Now</h3>
         </header>
+        <div>{error ? error.error : null}</div>
         <form className='signup-form' onSubmit={(e) => handleSubmit(e)}>
             <input type="text" name='full-name' id='full-name' className='register-input' placeholder='Full Name: John Smith' required />
     
@@ -45,12 +50,16 @@ function SignupForm(props) {
 
 function LogInForm(props) {
   const history = useHistory()
+  const [error, setError] = useState({})
 
   function handleSubmit(e) {
       e.preventDefault()
       AuthApiService.postLogin({password: e.target['password'].value, username: e.target['username'].value, userType: props.userType === 1 ? 'teacher' : 'student'})
       .then(() => {
           history.push('/teacher_classes')
+      })
+      .catch(res => {
+        setError({ error: res.error })
       })
   }
 
@@ -60,6 +69,7 @@ function LogInForm(props) {
         <header>
             <h3>Log-in</h3>
         </header>
+        <div>{error ? error.error : null}</div>
         <form className='signup-form' onSubmit={(e) => handleSubmit(e)}>
             <input type="text" name='username' id='username' className='register-input' placeholder='Username' required />
     

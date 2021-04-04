@@ -34,7 +34,11 @@ export default function Worksheets() {
             'authorization': `bearer ${TokenService.getAuthToken()}`,
         }
     })
-    .then(res => res.json())
+    .then(res =>
+        (!res.ok)
+            ? res.json().then(e => Promise.reject(e))
+            : res.json()
+    )
     .then(worksheets => {
         let placeholdersArr = []
         if ((worksheets.length + 1) % 4 === 0 && worksheets.length + 1 > 2) {
@@ -74,7 +78,7 @@ export default function Worksheets() {
                 : ''}
                 {worksheets.map((worksheet, idx) => {
                     return (
-                        <animated.ul style={style} className={worksheet.worksheet_name ? 'worksheet': 'worksheet-placeholder'} onClick={() => handleWorksheetClick(worksheet)}>
+                        <animated.ul key={idx} style={style} className={worksheet.worksheet_name ? 'worksheet': 'worksheet-placeholder'} onClick={() => handleWorksheetClick(worksheet)}>
                             <li key={idx}>{worksheet.worksheet_name}</li>  
                         </animated.ul>
                     )

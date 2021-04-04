@@ -26,7 +26,11 @@ export default function CreateClass() {
             },
             body: JSON.stringify(TokenService.getTeacherId() ? teacher : student)
         })
-        .then(() => history.push('/teacher_classes'))
+        .then(res =>
+            (!res.ok)
+                ? res.json().then(e => Promise.reject(e))
+                : history.push('/teacher_classes')
+        )
     }
     return (
         <div className='CreateClass-main'>    
