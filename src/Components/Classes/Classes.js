@@ -110,7 +110,7 @@ export default function Classes() {
                                 <Link key={idx} to={ course.class_id ? `/teacher_classes/${course.class_id}` : '/teacher_classes'} >
                                     <animated.ul style={style} className={course.class_id ? 'class' : 'class-placeholder'}>
                                         <li><b>{course.class_name}</b></li>
-                                        <li>{TokenService.getTeacherId() ? `Class ID: ${course.class_id}` : ''}</li>
+                                        <li>{course.class_id !== undefined && TokenService.getTeacherId() ? `Class ID: ${course.class_id}` : ''}</li>
                                         <li>{course.students !== undefined ? `Students: ${course.students}` : ''}</li>
                                         <li>{course.worksheets !== undefined ? `Worksheets: ${course.worksheets}` : ''}</li>
                                     </animated.ul>
