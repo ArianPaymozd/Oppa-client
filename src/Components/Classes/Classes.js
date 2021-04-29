@@ -15,7 +15,7 @@ export default function Classes() {
     const [style] = useSpring(() => ({
         config: { tension: 80, friction: 25 },
         from: {borderRadius: `50%`, width: '0vw', opacity: 0, fontSize: '0vw'},
-        to: {borderRadius: `16%`, width: '20vw', opacity: 1, fontSize: window.innerWidth >= 2000 ? '1erm' : '2.5vw' }
+        to: {borderRadius: `16%`, width: '20vw', opacity: 1, fontSize: window.innerWidth >= 2000 ? '0.7erm' : '2vw' }
     }))
 
     const [addStyle] = useSpring(() => ({
@@ -110,6 +110,7 @@ export default function Classes() {
                                 <Link key={idx} to={ course.class_id ? `/teacher_classes/${course.class_id}` : '/teacher_classes'} >
                                     <animated.ul style={style} className={course.class_id ? 'class' : 'class-placeholder'}>
                                         <li><b>{course.class_name}</b></li>
+                                        <li>{TokenService.getTeacherId() ? `Class ID: ${course.class_id}` : ''}</li>
                                         <li>{course.students !== undefined ? `Students: ${course.students}` : ''}</li>
                                         <li>{course.worksheets !== undefined ? `Worksheets: ${course.worksheets}` : ''}</li>
                                     </animated.ul>
